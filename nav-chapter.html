@@ -316,7 +316,7 @@ function addChapter(series,number) {
     ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
   } else {
     console.log("Chapter generation was attempted, but failed due to missing XML data.")
-        ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<div class='scan-chapter'><span style='font-size: 30;font-weight: 500;'>Error</span><br><span style='font-weight: 300;'>This chapter's data failed to load. Please speak to me (SierraComix) if you see this message in normal use.</span></div>");
+        ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<div class='scan-chapter'><span style='font-size: 30;font-weight: 500;'>Error</span><br><span style='font-weight: 300;'>This chapter's data failed to load.</span></div>");
   }
 }
 
