@@ -159,7 +159,7 @@ updatePages()
 
 var text, parser, xmlDoc;
 
-text = loadFileToElement("https://boredstudent13255.github.io/missdream-nakayoshi-reup/read/" + TITLE + "/Ch." + CHAPT + "/chapter.xml");
+text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + TITLE + "/Ch." + CHAPT + "/chapter.xml");
 
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(text,"text/xml");
@@ -241,7 +241,7 @@ injectpagetitle.innerHTML = "Reading " + XMLCurrentSeriesTitle;
 
 //Injects a functional return address into the return link tag
 let injectseriespage = document.getElementById("returnlink");
-injectseriespage.href = "../read/nav-chapter.html?s=" + XMLParentSeriesID;
+injectseriespage.href = "nav-chapter.html?s=" + XMLParentSeriesID;
 
 //Deletes the JS warning text, because if this runs, JS is working
 //let erasejswarning = document.getElementById("JavascriptBrokenWarning");
