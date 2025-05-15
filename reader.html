@@ -180,11 +180,13 @@ const XMLChapterPageCount = xmlDoc.getElementsByTagName("pagecount")[0].childNod
 
 const XMLNextUpID = xmlDoc.getElementsByTagName("next-series")[0].childNodes[0].nodeValue;
 const XMLNextUpChapter = xmlDoc.getElementsByTagName("next-number")[0].childNodes[0].nodeValue;
-var XMLNextUpTargetPage = xmlDoc.getElementsByTagName("next-target-page")[0].childNodes[0].nodeValue;
+//var XMLNextUpTargetPage = xmlDoc.getElementsByTagName("next-target-page")[0].childNodes[0].nodeValue;
+var XMLNextUpTargetPage = "01";
 
 const XMLLastUpID = xmlDoc.getElementsByTagName("previous-series")[0].childNodes[0].nodeValue;
 const XMLLastUpChapter = xmlDoc.getElementsByTagName("previous-chapter")[0].childNodes[0].nodeValue;
-var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("previous-target-page")[0].childNodes[0].nodeValue;
+//var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("previous-target-page")[0].childNodes[0].nodeValue;
+var XMLLastUpTargetPage = "01";
 
 if (XMLNextUpTargetPage === "default") {
 console.log("Value for next chapter's target page was set to 'default', auto-set to '1'");
