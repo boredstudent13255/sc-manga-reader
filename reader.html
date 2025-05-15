@@ -312,12 +312,14 @@ injectpageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" +
 ++PAGEO;
 ++PAGEE;
 ++PAGEE;
+convertPagesToString()
 queuepageodd.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEO + ".jpg";
 queuepageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEE + ".jpg";
 --PAGEO;
 --PAGEO;
 --PAGEE;
 --PAGEE;
+convertPagesToString()
 
 //Hides unpopulated <img> tags. Based on part of the code that generates the issue download pages.
 const images = document.querySelectorAll('img');
