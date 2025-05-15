@@ -195,7 +195,7 @@ const ChapterEntryInsertionPoint = document.querySelector("#insert-chapter-entry
 
 //Grabs XML for current series
 var text, parser, seriesXML;
-text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/" + SeriesID + "/series.xml");
+text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + SeriesID + "/series.xml");
 parser = new DOMParser();
 seriesXML = parser.parseFromString(text,"text/xml");
 try {
@@ -245,7 +245,7 @@ function addChapter(series,number) {
   var CurrentChapterNumber = number;
   //Loads XML code and saves the necessary variables for the current chapter
   var text, parser, xmlDoc;
-  text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/" + CurrentChapterNumber + "chapter.xml");
+  text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + CurrentChapterNumber + "chapter.xml");
   parser = new DOMParser();
   xmlDoc = parser.parseFromString(text,"text/xml");
   try {
