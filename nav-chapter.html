@@ -1,0 +1,326 @@
+<style>
+
+body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 250;
+  font-size: 17;
+  letter-spacing: -0.2;
+  padding: 0;
+  margin: 0;
+}
+.pinklink:link {
+  color: E57499;
+  text-decoration: none;
+}
+.pinklink:visited {
+  color: E57499;
+  text-decoration: none;
+}
+.pinklink:hover {
+  color: E57499;
+  text-decoration: underline;
+}
+.pinklink:active {
+  color: E57499;
+  text-decoration: none;
+}
+.titletext {
+  color: D37896;
+  font-weight: 300;
+  font-size:48;
+  letter-spacing: 0.5;
+}
+.chaptercontainerurl {
+  color: 000000;
+  text-decoration: none;
+}
+.chapterdiv {
+  color: D37896;
+  font-weight: 300;
+  font-size:48;
+  letter-spacing: 0.5;
+}
+.yeartext {
+  font-family: "Shafarik", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0;
+  font-size: 25;
+  text-align: center;
+}
+.content {
+  width: 55%;
+  margin: auto;
+  margin-top: 2%;
+}
+.banner {
+  background-position: center center;
+  background-color: black;
+  background-image: url("../NakayoshiBannerv1.1.png");
+  background-size: cover;
+  transform: translate3d(0px, 0px, 0px);
+  width: 100%;
+  height: 20%;
+  Border-style: hidden hidden solid hidden;
+  border-color: E57499;
+  border-width: 0px;
+}
+.navibar {
+  background-color: E57499;
+  width: 100%
+}
+.nav-ent {
+  color: FFFFFF;
+  background-color: E57499;
+  width: fit-content;
+  transform: translate3d(10%, 0px, 0px);
+  padding: 10px;
+  display: inline-block;
+}
+.nav-ent:hover {
+  background-color: C86282;
+}
+.scan-chapter {
+  padding: 0.5%;
+  overflow: hidden;
+  background-color: f6f6f6;
+  margin-bottom: 1%;
+  border-radius: 3px;
+}
+.scan-chapter:hover {
+  background-color: E8E8E8;
+}
+.chapt-data {
+  padding-top: 0px;
+}
+.chapt-data-2 {
+ font-size: 15;
+  padding-left: 10px;
+  margin-top: 4px;
+}
+.scandata2 {
+  font-weight: 300;
+}
+.chapter-title-en {
+  margin-left: 3px;
+  font-size: 18;
+  font-weight: 450;
+}
+.is-one-shot {
+  color: FFFFFF;
+  background-color: E36D8B;
+  padding: 1px;
+  padding-left: 5px;
+  padding-right: 6px;
+  margin-right: 5px;
+  border-radius: 6px;
+  font-weight: 450;
+}
+.arc-title {
+  color: FFFFFF;
+  background-color: A09FE4;
+  padding: 1px;
+  padding-left: 5px;
+  padding-right: 6px;
+  margin-right: 5px;
+  border-radius: 6px;
+  font-weight: 450;
+}
+.chapter-title-ja {
+  padding-top: 5px;
+  font-size: 14;
+  padding-left: 10px;
+}
+.arc-title-ja {
+  background-color: CFD4FA;
+  padding: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 12px;
+  border-radius: 3px;
+  font-weight: 1000;
+}
+.years {
+  padding: 3px;
+  font-size: 14;
+  font-weight: 100;
+  font-style: italic;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Shafarik&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="icon" href="https://missdream.org/wp-content/themes/miss-dream/favicon.png">
+<html>
+  <title>Miss Dream mirror</title>
+  <body>
+    <div class="banner"></div>
+    <div class="navibar">
+      <div class="nav-ent" style="width:20%;background-color:E57499;display:inline-block;"></div>
+      <a href="../mft.html"><div class="nav-ent">My Future Translations</div></a>
+      <a href="../read/nav-series.html"><div class="nav-ent">Read Our Titles</div></a>
+      <a href="../nakayoshi.html"><div class="nav-ent"><i>Nakayoshi Scans</i></div></a>
+      <a href="../additional.html"><div class="nav-ent"><i>Additional Mag Scans</i></div></a>
+      <a href="../collection-help.html"><div class="nav-ent">Contribute!</div></a>
+    </div>
+      <div class="content">
+        <span class="titletext" id="seriestitle">Series title here</span>
+        <br>
+        <p>
+        <div class="lore">
+<p id="lore">
+	Series overview here
+</p>
+        </div>
+        
+<p class="yeartext">Chapters</p>
+
+<code id="insert-chapter-entry"></code>
+
+<!-- <button onclick="addChapter('chou-kuse','02')">Insert Chapter</button> -->
+      <div style="height:25%;"></div>
+    </div>
+  </body>
+  <script>
+
+//Gets my query strings and converts them into variables
+const urlParams = new URLSearchParams(window.location.search);
+SeriesID = urlParams.get('s');
+
+//Grabs the chapter insert point for later
+const ChapterEntryInsertionPoint = document.querySelector("#insert-chapter-entry");
+
+//On-Load Chapter Fetching Loop
+
+//Grabs XML for current series
+var text, parser, seriesXML;
+text = loadFileToElement("https://boredstudent13255.github.io/missdream-nakayoshi-reup/read/" + SeriesID + "/series.xml");
+parser = new DOMParser();
+seriesXML = parser.parseFromString(text,"text/xml");
+try {
+//Required tags
+  var SeriesXMLDisplayTitle = seriesXML.getElementsByTagName("series-display-name")[0].childNodes[0].nodeValue;
+  var SeriesXMLDisplayTitleOrig = seriesXML.getElementsByTagName("series-original-name")[0].childNodes[0].nodeValue;
+  var SeriesXMLOverview = seriesXML.getElementsByTagName("series-overview")[0].childNodes[0].nodeValue;
+  var SeriesXMLChapterTotal = seriesXML.getElementsByTagName("chapter-count")[0].childNodes[0].nodeValue;
+} catch (error) {
+  console.error("Failed to load data to current series. Likely series XML is malformed or unavailable.")
+}
+
+let injecttitle = document.getElementById("seriestitle");
+injecttitle.innerHTML = SeriesXMLDisplayTitle;
+let injectoverview = document.getElementById("lore");
+injectoverview.innerHTML = SeriesXMLOverview;
+
+
+for (let i = 1; i <= SeriesXMLChapterTotal; i++) {
+  //console.log("ent-" + i);
+  addChapter(SeriesID,seriesXML.getElementsByTagName("ent-" + i)[0].childNodes[0].nodeValue);
+}
+
+
+//Functions
+
+//Code to fetch an XML file from the server.
+function loadFileToElement(filename) {
+  var xmlHTTP = new XMLHttpRequest();
+  try
+  {
+  xmlHTTP.open("GET", filename, false);
+  xmlHTTP.send(null);
+  }
+  catch (e) {
+    console.error("Unable to load the requested XML.");
+    return;
+  }
+
+  return xmlHTTP.responseText;
+}
+
+//Generates and inserts a chapter. 
+function addChapter(series,number) {
+  //Sets the specified data from the button. Placeholder until XML for series data is working. DO NOT DELETE, simply convert to variable declarations and move to on-load code.
+  var SeriesID = series;
+  var CurrentChapterNumber = number;
+  //Loads XML code and saves the necessary variables for the current chapter
+  var text, parser, xmlDoc;
+  text = loadFileToElement("https://boredstudent13255.github.io/missdream-nakayoshi-reup/read/" + CurrentChapterNumber + "chapter.xml");
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(text,"text/xml");
+  try {
+    //Required tags
+    var CurrChaptXMLChapterNum = xmlDoc.getElementsByTagName("chapternum")[0].childNodes[0].nodeValue;
+    var CurrChaptXMLSeriesID = xmlDoc.getElementsByTagName("parentseries")[0].childNodes[0].nodeValue;
+    var CurrChaptXMLSeriesTitle = xmlDoc.getElementsByTagName("parentdisplayname")[0].childNodes[0].nodeValue;
+    var CurrChaptXMLChapterDesc = xmlDoc.getElementsByTagName("chaptersummary")[0].childNodes[0].nodeValue;
+    var CurrChaptXMLPageCount = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
+    //Filling out optional tags
+      //gets "chapterdisplaynum" tag
+    if (text.includes("chapterdisplaynum")) {
+      var CurrChaptXMLChapterNumReadable = xmlDoc.getElementsByTagName("chapterdisplaynum")[0].childNodes[0].nodeValue;
+    } else {
+      var CurrChaptXMLChapterNumReadable = "unset";
+    }
+      //gets "arctitle" and "ja-arc-title" tags
+    if (text.includes("arctitle")) {
+      var CurrChaptXMLArcTitle = xmlDoc.getElementsByTagName("arctitle")[0].childNodes[0].nodeValue;
+      var CurrChaptXMLArcTitleOrig = xmlDoc.getElementsByTagName("ja-arc-title")[0].childNodes[0].nodeValue;
+    } else {
+      var CurrChaptXMLArcTitle = "unset";
+      var CurrChaptXMLArcTitleOrig = "unset";
+    }
+      //gets "chaptertitle" and "ja-chapter-title" tags
+    if (text.includes("chaptertitle")) {
+      var CurrChaptXMLChapterTitle = xmlDoc.getElementsByTagName("chaptertitle")[0].childNodes[0].nodeValue;
+      var CurrChaptXMLChapterTitleOrig = xmlDoc.getElementsByTagName("ja-chapter-title")[0].childNodes[0].nodeValue;
+    } else {
+      var CurrChaptXMLChapterTitle = "unset";
+      var CurrChaptXMLChapterTitleOrig = "unset";
+    }
+      //gets "type" tag
+    if (text.includes("type")) {
+      var CurrChaptXMLChapterType = xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue;
+    } else {
+      var CurrChaptXMLChapterType = "unset";
+    }
+      //gets "publisd" and "scanlatd" tags
+    if (text.includes("publisd")) {
+      var CurrChaptXMLPubDate = xmlDoc.getElementsByTagName("publisd")[0].childNodes[0].nodeValue;
+      var CurrChaptXMLScanDate = xmlDoc.getElementsByTagName("scanlatd")[0].childNodes[0].nodeValue;
+    } else {
+      var CurrChaptXMLPubDate = "1900/1/1";
+      var CurrChaptXMLScanDate = "1900/1/1";
+    }
+  } catch (error) {
+    console.error("Failed to load data to chapter " + CurrChaptXMLChapterNum + ". Likely XML is malformed or unavailable.")
+  }
+  //Generates and inserts chapter entry
+  if (CurrChaptXMLSeriesID === "chou-kuse" && CurrChaptXMLChapterNum > 12 && CurrChaptXMLChapterNum !== "13.5") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a title='Reiko is my wife. -Sierra' class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle !== "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle !== "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle !== "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle !== "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle === "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle === "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle === "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle === "unset") {
+    ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
+  } else {
+    console.log("Chapter generation was attempted, but failed due to missing XML data.")
+        ChapterEntryInsertionPoint.insertAdjacentHTML("beforebegin","<div class='scan-chapter'><span style='font-size: 30;font-weight: 500;'>Error</span><br><span style='font-weight: 300;'>This chapter's data failed to load. Please speak to me (SierraComix) if you see this message in normal use.</span></div>");
+  }
+}
+
+
+
+  </script>
+</html>

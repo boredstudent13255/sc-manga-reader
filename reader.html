@@ -1,0 +1,334 @@
+<style>
+body {
+  background-color: 2B2B2B;
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 250;
+  font-size: 17;
+  letter-spacing: -0.2;
+  overflow: hidden;
+  }
+.pinklink:link {
+  color: E57499;
+  text-decoration: none;
+}
+.pinklink:visited {
+  color: E57499;
+  text-decoration: none;
+}
+.pinklink:hover {
+  color: E57499;
+  text-decoration: underline;
+}
+.pinklink:active {
+  color: E57499;
+  text-decoration: none;
+} 
+.return-link-container {
+  position: relative;
+  z-index: 100;
+  width: fit-content;
+  background-color: FFFFFF;
+  target-width: 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+.reader-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+img {
+  max-width: 50%;
+}
+.pageshifter {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,255,0)
+}
+.pageadvancer {
+  width: 50%;
+  height: 100%;
+  float: left;
+  background-color: rgba(255,0,0,0)
+}
+.pageregresser {
+  width: 50%;
+  height: 100%;
+  float: right;
+  background-color: rgba(0,255,0,0)
+}
+.pagequeuer {
+  width: 0px;
+  height: 0px;
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="icon" href="https://missdream.org/wp-content/themes/miss-dream/favicon.png">
+
+<html>
+
+  <title id="pagetitle">Reading something on the My Future Translations website</title>
+
+  <body>
+
+    <div id="returnlinkcontainer" class="return-link-container">
+      <a class="pinklink" id="returnlink" href="../read/_series_/index.html">
+      Return to series page
+      </a>
+    </div> 
+
+    <div class="pageshifter">
+      <div class="pageadvancer" onclick="advancePage()"><img class="pagequeuer" id="pagequeue1"/></div>
+      <div class="pageregresser" onclick="retreatPage()"><img class="pagequeuer" id="pagequeue2"/></div>
+    </div>
+
+    <div class="reader-content">
+<img id="Page-Left" src="../read/empty-page.jpg" style="max-height:100%;" /><img id="Page-Right" src="../read/empty-page.jpg" style="max-height:100%;" />
+    </div>
+
+  </body>
+
+<script>
+//SECTION: GET AND PROCESS SPECIFIED CONTENT REQUEST
+
+//Gets my query strings and converts them into variables
+const urlParams = new URLSearchParams(window.location.search);
+var TITLE = urlParams.get('s');
+var CHAPT = urlParams.get('c');
+let PAGEO = urlParams.get('p');
+var BACKDROPCOLOR = urlParams.get('bg');
+var EMBEDMODE = urlParams.get('embed');
+
+if (EMBEDMODE !== "true") {
+EMBEDMODE = "false";
+}
+
+//Apply configurations for heavier customization
+if (BACKDROPCOLOR === BACKDROPCOLOR) {
+document.body.style.backgroundColor = BACKDROPCOLOR;
+}
+if (EMBEDMODE === "true") {
+const removeReturnLink = document.getElementById("returnlinkcontainer");
+removeReturnLink.remove()
+}
+
+
+
+console.log("Read query strings: Title is " + TITLE + ", chapter is " + CHAPT + ", page is " + PAGEO);
+
+// Fixes PAGEO if the user-specified value is not a number
+if (isNaN(PAGEO)) {
+PAGEO = 1;
+console.log("Invalid value for 'p' query string, defaulted to 1. PAGEO Value is now '" + PAGEO + "'");
+}
+
+// Checks if the detected page value was set by the user and acts appropriately.
+console.log("Incrementing. Value is now '" + ++PAGEO + "'");
+if (PAGEO < 2) {
+PAGEO = 1;
+console.log("No user-specified page number or is invalid, defaulted to 1. PAGEO Value is now '" + PAGEO + "'");
+} else {
+console.log("User-specified page number detected and set. PAGEO Value is now '" + --PAGEO + "'");
+}
+
+// Odd Number Specified Check
+if(PAGEO % 2 == 0) {
+  console.log("Specified page number is even. Incrementing to the relevant odd number. PAGEO Value is now '" + ++PAGEO + "'");
+} else {
+  console.log("Odd page number check passed. PAGEO Value remains '" + PAGEO + "'");
+}
+
+//Incomplete code to allow users to specify a chapter value without conforming to the 2-digit structure.
+//if (CHAPT < 10) {
+//CHAPT = "0" + CHAPT
+//}
+
+console.log("Final log before updating pages. PAGEO Value is currently '" + PAGEO + "'");
+
+updatePages()
+
+
+
+//Loads current chapter's XML from Github repository and saves it to constants and variables.
+
+var text, parser, xmlDoc;
+
+text = loadFileToElement("https://boredstudent13255.github.io/missdream-nakayoshi-reup/read/" + TITLE + "/Ch." + CHAPT + "/chapter.xml");
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(text,"text/xml");
+
+
+    //gets "returnto" tag
+  var XMLParentSeriesID = TITLE;
+  if (text.includes("returnto")) {
+    var XMLParentSeriesID = xmlDoc.getElementsByTagName("returnto")[0].childNodes[0].nodeValue;
+  }
+const XMLCurrentSeriesTitle = xmlDoc.getElementsByTagName("parentdisplayname")[0].childNodes[0].nodeValue;
+const XMLCurrentSeriesID = xmlDoc.getElementsByTagName("parentseries")[0].childNodes[0].nodeValue;
+const XMLChapterSummary = xmlDoc.getElementsByTagName("chaptersummary")[0].childNodes[0].nodeValue;
+
+const XMLInternalChapterNumber = xmlDoc.getElementsByTagName("chapternum")[0].childNodes[0].nodeValue;
+const XMLDisplayableChapterNumber = xmlDoc.getElementsByTagName("chapterdisplaynum")[0].childNodes[0].nodeValue;
+const XMLChapterPageCount = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
+
+const XMLNextUpID = xmlDoc.getElementsByTagName("next-series")[0].childNodes[0].nodeValue;
+const XMLNextUpChapter = xmlDoc.getElementsByTagName("next-number")[0].childNodes[0].nodeValue;
+var XMLNextUpTargetPage = xmlDoc.getElementsByTagName("next-target-page")[0].childNodes[0].nodeValue;
+
+const XMLLastUpID = xmlDoc.getElementsByTagName("previous-series")[0].childNodes[0].nodeValue;
+const XMLLastUpChapter = xmlDoc.getElementsByTagName("previous-chapter")[0].childNodes[0].nodeValue;
+var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("previous-target-page")[0].childNodes[0].nodeValue;
+
+if (XMLNextUpTargetPage === "default") {
+console.log("Value for next chapter's target page was set to 'default', auto-set to '1'");
+XMLNextUpTargetPage = "1";
+}
+if (XMLLastUpTargetPage === "default") {
+console.log("Value for last chapter's target page was set to 'default', auto-set to '1'");
+XMLLastUpTargetPage = "1";
+}
+
+
+console.log("Current series title is " + XMLCurrentSeriesTitle + ", chapter " + XMLDisplayableChapterNumber + ", featuring " + XMLChapterPageCount + " pages. Were you to click next, you would go to the url for SeriesID '" + XMLNextUpID + "', chapter number '" + XMLNextUpChapter + "' and page number '" + XMLNextUpTargetPage + "'.");
+
+
+function loadFileToElement(filename) {
+  var xmlHTTP = new XMLHttpRequest();
+  try
+  {
+  xmlHTTP.open("GET", filename, false);
+  xmlHTTP.send(null);
+  }
+  catch (e) {
+    window.alert("Unable to load the requested file.");
+    return;
+  }
+
+  return xmlHTTP.responseText;
+}
+
+
+//Arrow controls
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == 37) {
+       advancePage()
+    }
+    else if (e.keyCode == 39) {
+       retreatPage()
+    }
+
+}
+
+
+
+
+//Injects a new title into the title tag
+let injectpagetitle = document.getElementById("pagetitle");
+injectpagetitle.innerHTML = "Reading " + XMLCurrentSeriesTitle;
+
+
+//Injects a functional return address into the return link tag
+let injectseriespage = document.getElementById("returnlink");
+injectseriespage.href = "../read/nav-chapter.html?s=" + XMLParentSeriesID;
+
+//Deletes the JS warning text, because if this runs, JS is working
+//let erasejswarning = document.getElementById("JavascriptBrokenWarning");
+//erasejswarning.innerHTML = " ";
+
+
+
+//Sets PAGEE to PAGEO minus 1 and converts it into a string containing a prior 0 should it be a single-digit integer
+function convertPagesToString() {
+PAGEE = PAGEO - 1;
+if (PAGEE < 10) {
+PAGEE = "0" + PAGEE
+}
+let oddPageVarType = typeof(PAGEO)
+if (oddPageVarType = "number") {
+if (PAGEO < 10 && PAGEO > -1) {
+PAGEO = "0" + PAGEO;
+console.log("Odd page value is less than 10 and a number variable, converting to string and adding a 0. PAGEO Value is now '" + PAGEO + "'");
+}
+}
+}
+
+function advancePage() {
+  if (PAGEO >= XMLChapterPageCount) {
+  jumpToNextChapter()
+  } else {
+  console.log(PAGEO);
+  console.log(++PAGEO);
+  console.log(++PAGEO);
+  updatePages() 
+  }
+}
+
+function retreatPage() {
+  console.log("Pre-test pageo is " + PAGEO);
+  if (PAGEO === "01") {
+  jumpToLastChapter()
+  } else {
+  console.log(PAGEO);
+  console.log(--PAGEO);
+  console.log(--PAGEO);
+  updatePages() 
+  }
+}
+
+function jumpToNextChapter() {
+  if (EMBEDMODE === "false" && XMLNextUpID !== "null") {
+   window.location.href = "../read/reader.html?s=" + XMLNextUpID + "&c=" + XMLNextUpChapter + "&p=" + XMLNextUpTargetPage; //Replace vars with relevant constants from chapter XML
+  }
+}
+
+function jumpToLastChapter() {
+  if (EMBEDMODE === "false" && XMLLastUpID !== "null") {
+   window.location.href = "../read/reader.html?s=" + XMLLastUpID + "&c=" + XMLLastUpChapter + "&p=" + XMLLastUpTargetPage; //Replace vars with relevant constants from chapter XML
+  }
+}
+
+function updatePages() {
+//Injects the suitable image URL for the specified parameters into the left page, and that of the next smallest into the right.
+convertPagesToString()
+let injectpageodd = document.getElementById("Page-Left");
+let injectpageeven = document.getElementById("Page-Right");
+let queuepageodd = document.getElementById("pagequeue1");
+let queuepageeven = document.getElementById("pagequeue2");
+injectpageodd.src = "../read/" + TITLE + "/Ch." + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEO + ".jpg";
+injectpageeven.src = "../read/" + TITLE + "/Ch." + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEE + ".jpg";
+++PAGEO;
+++PAGEO;
+++PAGEE;
+++PAGEE;
+queuepageodd.src = "../read/" + TITLE + "/Ch." + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEO + ".jpg";
+queuepageeven.src = "../read/" + TITLE + "/Ch." + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEE + ".jpg";
+--PAGEO;
+--PAGEO;
+--PAGEE;
+--PAGEE;
+
+//Hides unpopulated <img> tags. Based on part of the code that generates the issue download pages.
+const images = document.querySelectorAll('img');
+images.forEach(image => {
+  image.style.visibility = 'visible';
+  image.onerror = () => {
+    image.style.visibility = 'hidden';
+  };
+});
+}
+
+</script>
+
+</html>
