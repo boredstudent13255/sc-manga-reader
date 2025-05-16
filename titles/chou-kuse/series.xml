@@ -8,6 +8,7 @@
   <order>beforebegin</order>
   <chapters>
     <ent-1>kuse-ni-narisou/Chapt01/</ent-1>
+    
     <!--<ent-2>kuse-ni-narisou/Chapt02/</ent-2>
     <ent-3>kuse-ni-narisou/Chapt03/</ent-3>
     <ent-4>chou-kuse/Chapt01/</ent-4>
@@ -16,6 +17,16 @@
     <ent-7>chou-kuse/Chapt04/</ent-7>
     <ent-8>chou-kuse/Chapt05/</ent-8>
     <ent-9>chou-kuse/Chapt06/</ent-9>-->
+    
+    <ent-2>-</ent-2>
+    <ent-3>-</ent-3>
+    <ent-4>-</ent-4>
+    <ent-5>-</ent-5>
+    <ent-6>-</ent-6>
+    <ent-7>-</ent-7>
+    <ent-8>-</ent-8>
+    <ent-9>-</ent-9>
+    
     <ent-10>chou-kuse/Chapt07/</ent-10>
     <ent-11>chou-kuse/Chapt08/</ent-11>
     <ent-12>chou-kuse/Chapt09/</ent-12>
