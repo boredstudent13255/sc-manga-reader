@@ -331,17 +331,17 @@ queuepageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + 
 --PAGEE;
 --PAGEE;
 convertPagesToString()
-
-//Hides unpopulated <img> tags. Based on part of the code that generates the issue download pages.
-const images = document.querySelectorAll('img');
-images.forEach(image => {
-  image.style.visibility = 'visible';
-  image.onerror = () => {
-    image.style.visibility = 'hidden';
-  };
-});
+setTimeout(() => {
+  //Hides unpopulated <img> tags. Based on part of the code that generates the issue download pages.
+  const images = document.querySelectorAll('img');
+  images.forEach(image => {
+    image.style.visibility = 'visible';
+    image.onerror = () => {
+      image.style.visibility = 'hidden';
+    };
+  });
+}, 500);
 }
-
 </script>
 
 </html>
