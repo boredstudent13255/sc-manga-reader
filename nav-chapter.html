@@ -198,7 +198,7 @@ try {
   var SeriesXMLOverview = seriesXML.getElementsByTagName("series-overview")[0].childNodes[0].nodeValue;
   var SeriesXMLChapterTotal = seriesXML.getElementsByTagName("chapter-count")[0].childNodes[0].nodeValue;
   if (seriesXML.includes("order")) {
-    var SeriesXMLChapterDisplayOrder = seriesXML.getElementsByTagName("order")[0].childNodes[0].nodeValue;
+    var SeriesXMLChapterDisplayOrder = "'" + seriesXML.getElementsByTagName("order")[0].childNodes[0].nodeValue + "'";
   } else {
     var SeriesXMLChapterDisplayOrder = "beforebegin";
   }
@@ -215,7 +215,7 @@ injectoverview.innerHTML = SeriesXMLOverview;
 
 for (let i = 1; i <= SeriesXMLChapterTotal; i++) {
   //console.log("ent-" + i);
-  addChapter(SeriesID,seriesXML.getElementsByTagName("ent-" + i)[0].childNodes[0].nodeValue,"afterend");
+  addChapter(SeriesID,seriesXML.getElementsByTagName("ent-" + i)[0].childNodes[0].nodeValue,SeriesXMLChapterDisplayOrder);
 }
 
 
