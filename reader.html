@@ -188,6 +188,15 @@ const XMLLastUpChapter = xmlDoc.getElementsByTagName("previous-chapter")[0].chil
 //var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("previous-target-page")[0].childNodes[0].nodeValue;
 var XMLLastUpTargetPage = "01";
 
+//Grabs page number for previous chapter end from the previous chapter's XML
+text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(text,"text/xml");
+if (text.includes("pagecount")) {
+  var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
+}
+
+//Handles "default" page number user specification. Legacy handling.
 if (XMLNextUpTargetPage === "default") {
 console.log("Value for next chapter's target page was set to 'default', auto-set to '1'");
 XMLNextUpTargetPage = "1";
@@ -197,12 +206,7 @@ console.log("Value for last chapter's target page was set to 'default', auto-set
 XMLLastUpTargetPage = "1";
 }
 
-//Grabs page number for previous chapter end
-text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
-parser = new DOMParser();
-xmlDoc = parser.parseFromString(text,"text/xml");
-const XMLLastUpTargetPage = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
-
+  
 console.log("Current series title is " + XMLCurrentSeriesTitle + ", chapter " + XMLDisplayableChapterNumber + ", featuring " + XMLChapterPageCount + " pages. Were you to click next, you would go to the url for SeriesID '" + XMLNextUpID + "', chapter number '" + XMLNextUpChapter + "' and page number '" + XMLNextUpTargetPage + "'.");
 
 
