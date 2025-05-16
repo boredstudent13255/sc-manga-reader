@@ -291,13 +291,13 @@ function retreatPage() {
 
 function jumpToNextChapter() {
   if (EMBEDMODE === "false" && XMLNextUpID !== "null") {
-   window.location.href = "../read/reader.html?s=" + XMLNextUpID + "&c=" + XMLNextUpChapter + "&p=" + XMLNextUpTargetPage; //Replace vars with relevant constants from chapter XML
+   window.location.href = "reader.html?s=" + XMLNextUpID + "&c=" + XMLNextUpChapter + "&p=" + XMLNextUpTargetPage; //Replace vars with relevant constants from chapter XML
   }
 }
 
 function jumpToLastChapter() {
   if (EMBEDMODE === "false" && XMLLastUpID !== "null") {
-   window.location.href = "../read/reader.html?s=" + XMLLastUpID + "&c=" + XMLLastUpChapter + "&p=" + XMLLastUpTargetPage; //Replace vars with relevant constants from chapter XML
+   window.location.href = "reader.html?s=" + XMLLastUpID + "&c=" + XMLLastUpChapter + "&p=" + XMLLastUpTargetPage; //Replace vars with relevant constants from chapter XML
   }
 }
 
