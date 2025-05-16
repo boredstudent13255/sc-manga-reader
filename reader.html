@@ -197,6 +197,11 @@ console.log("Value for last chapter's target page was set to 'default', auto-set
 XMLLastUpTargetPage = "1";
 }
 
+//Grabs page number for previous chapter end
+text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(text,"text/xml");
+const XMLLastUpTargetPage = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
 
 console.log("Current series title is " + XMLCurrentSeriesTitle + ", chapter " + XMLDisplayableChapterNumber + ", featuring " + XMLChapterPageCount + " pages. Were you to click next, you would go to the url for SeriesID '" + XMLNextUpID + "', chapter number '" + XMLNextUpChapter + "' and page number '" + XMLNextUpTargetPage + "'.");
 
