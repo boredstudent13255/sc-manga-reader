@@ -197,8 +197,8 @@ try {
   var SeriesXMLDisplayTitleOrig = seriesXML.getElementsByTagName("series-original-name")[0].childNodes[0].nodeValue;
   var SeriesXMLOverview = seriesXML.getElementsByTagName("series-overview")[0].childNodes[0].nodeValue;
   var SeriesXMLChapterTotal = seriesXML.getElementsByTagName("chapter-count")[0].childNodes[0].nodeValue;
-  if (seriesXML.includes("order")) {
-    var SeriesXMLChapterDisplayOrder = "'" + seriesXML.getElementsByTagName("order")[0].childNodes[0].nodeValue + "'";
+  if (seriesXML.includes("<order>afterend</order>")) {
+    var SeriesXMLChapterDisplayOrder = "afterend";
   } else {
     var SeriesXMLChapterDisplayOrder = "beforebegin";
   }
