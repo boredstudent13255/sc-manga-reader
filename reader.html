@@ -158,11 +158,9 @@ updatePages()
 //Loads current chapter's XML from Github repository and saves it to constants and variables.
 
 var text, parser, xmlDoc;
-try {
 text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + TITLE + "/Chapt" + CHAPT + "/chapter.xml");
-} catch {
-console.log("XML Load Call 1 failed");
-}
+console.log("XML Load Call fail divider - 1 is before, 2 is after");
+
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(text,"text/xml");
 
@@ -191,11 +189,7 @@ const XMLLastUpChapter = xmlDoc.getElementsByTagName("previous-chapter")[0].chil
 var XMLLastUpTargetPage = "01";
 
 //Grabs page number for previous chapter end from the previous chapter's XML
-try {
 text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
-} catch {
-console.log("XML Load Call 2 failed");
-}
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(text,"text/xml");
 if (text.includes("pagecount")) {
