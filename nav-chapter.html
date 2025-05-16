@@ -215,7 +215,7 @@ injectoverview.innerHTML = SeriesXMLOverview;
 
 for (let i = 1; i <= SeriesXMLChapterTotal; i++) {
   //console.log("ent-" + i);
-  addChapter(SeriesID,seriesXML.getElementsByTagName("ent-" + i)[0].childNodes[0].nodeValue,SeriesXMLChapterDisplayOrder);
+  addChapter(SeriesID,seriesXML.getElementsByTagName("ent-" + i)[0].childNodes[0].nodeValue,"afterend");
 }
 
 
