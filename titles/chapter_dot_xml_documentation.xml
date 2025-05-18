@@ -74,30 +74,3 @@
     <!--Depricated. See "next-target-page".-->
 
 </chapter>
-
-
-
-parentseries
-parentdisplayname
-chaptersummary
-chapterdisplaynum
-chapternum
-pagecount
-
-arctitle
-ja-arc-title
-chaptertitle
-ja-chapter-title
-publisd
-scanlatd
-type
-scanlator
-returnlinkstyle
-
-next-series
-next-number
-next-target-page
-
-previous-series
-previous-chapter
-previous-target-page
