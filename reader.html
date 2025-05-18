@@ -167,7 +167,7 @@ xmlDoc = parser.parseFromString(text,"text/xml");
 
     //gets "returnto" tag
   var XMLParentSeriesID = TITLE;
-  if (text.includes("returnto")) {
+  if (text.includes("<returnto>")) {
     var XMLParentSeriesID = xmlDoc.getElementsByTagName("returnto")[0].childNodes[0].nodeValue;
   }
 const XMLCurrentSeriesTitle = xmlDoc.getElementsByTagName("parentdisplayname")[0].childNodes[0].nodeValue;
@@ -204,7 +204,7 @@ if (text.includes("<scanlator>")) {
 text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(text,"text/xml");
-if (text.includes("pagecount")) {
+if (text.includes("<pagecount>")) {
   var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
 }
 
