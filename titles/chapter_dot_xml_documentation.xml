@@ -1,0 +1,103 @@
+<chapter>
+<!--No Group-->
+  <returnto>parent-series-id-for-return-link</returnto>
+    <!--Usually optional. Specifies the ID for the series that this chapter is included with. It CAN be specified, but is not *required* unless the chapter is filed under another series internally. EX: Kuse ni Narisou specifies "chou-kuse".-->
+
+<!--Title information-->
+  <parentseries>parent-series-id</parentseries>
+    <!--REQUIRED. Contains the ID for the current series, and is used for crucial infrastructure frequently.-->
+
+  <parentdisplayname>Parent Series Readable Name</parentdisplayname>
+    <!--REQUIRED. Will be displayed in the "title" tag. "Reading [tag contents]"-->
+
+  <chaptersummary>This tag contains a description.</chaptersummary>
+    <!--REQUIRED. Contains a chapter description. (Note: Line breaks are not supported.) Functionally this tag may be unneeded, however it is expected to be present. If it is not, then the XML parsing will fail on both key pages.-->
+
+
+<!--Additional title information-->
+  <chapterdisplaynum>1</chapterdisplaynum>
+    <!--REQUIRED. Contains a readable chapter number that will be displayed to the end user.-->
+
+  <chapternum>01</chapternum>
+    <!--REQUIRED. Contains the chapter number that is used internally.-->
+
+  <pagecount>32</pagecount>
+    <!--REQUIRED. THIS IS NOT A PAGE COUNT. Set this value to the highest page number present. This tells the reader when to stop stepping pages forward (and jump chapters if applicable) and also says what page to jump to when entering the chapter from the end. This exists because JavaScript cannot easily retrieve directory contents on its own.-->
+
+  <arctitle>Electric Boogaloo</arctitle>
+    <!--Optional. If this tag is not present, then an arc tag will not appear prior to the chapter title. NOTE: The existence of this tag will also enable rendering of the Japanese arc title; these are a package deal. If one is present, then the other is required.-->
+
+  <ja-arc-title>電子ブーガルー</ja-arc-title>
+    <!--Optional, unless the prior is present. Note: This tag is not Japanese-specific, this is simply the naming convention I went with. Simply use this to display the native-language arc title.-->
+
+  <chaptertitle>Gay Gay Yuri 2</chaptertitle>
+    <!--Optional. Self explanatory. If this is absent, the entry will not display a chapter title. Note: similar to the arc titles, this and ja-chapter-title are a package deal and the use of one demands the other.-->
+
+  <ja-chapter-title>ゲイゲイ百合２</ja-chapter-title>
+    <!--Optional, unless the prior is present. Behaves as ja-arc-title does, though like a generic title.-->
+
+  <publisd>1900/01/01</publisd>
+    <!--REQUIRED. Should be the YYYY/MM/DD original publication of the title. Generally, this will be the publication date of a manga magazine. EX: 90s Nakayoshi titles would be the 1st of the month, Yurihime, the 16th-18th (depending on the placement of the weekend.)-->
+
+  <scanlatd>1900/01/01</scanlatd>
+    <!--REQUIRED. Release date of the finished scanlation. Does not necessarily need to be the release on THIS site, just the first time it was released. [Note to Sierra: When writing the script, if this is unspecified, tell it to default to the current date.]-->
+
+  <scanlator>Aoi Shoujo Scan</scanlator>
+    <!--Currently optional, but may be required in the future. Scanlator credit. As of writing, this is currently only used to determine which series select page to send the user to from a oneshot. If this tag is absent, then the series select page will default to My Future Translations. However, team credits may be added to the chapter select page in the future.-->
+
+  <type>one-shot</type>
+    <!--Optional. If the title is a oneshot, set the contents to "one-shot" and it will be flagged as such in chapter nagivation. Otherwise, the input can be anything and behavior will be unchanged.-->
+
+  <returnlinkstyle>one-shot</returnlinkstyle>
+    <!--Optional. If the tag is specified as "one-shot", then the "return to series page" link will be replaced with a "return to series select" link. Takes the same inputs as "type", as during development of this feature, the "type" tag was referenced.-->
+
+
+<!--Directions to next chapter-->
+  <next-series>next-chapter-series-id</next-series>
+    <!--REQUIRED. Specifies the series for the next chapter. Intended for cases like "Kuse ni Narisou" -> "Chou Kuse ni Narisou". If there is no next chapter, set to "null" to disable proceeding to nonexistant content.-->
+
+  <next-chapter>02</next-chapter>
+    <!--REQUIRED. See above. Should be the internal number for the next chapter in the sequence.-->
+
+  <next-target-page>default</next-target-page>
+    <!--Depricated. Don't bother. In earlier versions of the reader, only the current XML file would be retrieved, so the page number to jump to when stepping forward or back a chapter needed to be in the current chapter's XML. However, this behavior has been disabled for simplicity's sake.-->
+
+
+<!--Directions to last chapter-->
+  <previous-series>null</previous-series>
+    <!--REQUIRED. Specifies the series for the previous chapter. Intended for cases like "Chou Kuse ni Narisou" -> "Kuse ni Narisou". If there is no previous chapter, set to "null" to disable returning to nonexistant content.-->
+
+  <previous-chapter>null</previous-chapter>
+    <!--REQUIRED. Should be the internal number for the previous chapter in the sequence.-->
+
+  <previous-target-page>36</previous-target-page>
+    <!--Depricated. See "next-target-page".-->
+
+</chapter>
+
+
+
+parentseries
+parentdisplayname
+chaptersummary
+chapterdisplaynum
+chapternum
+pagecount
+
+arctitle
+ja-arc-title
+chaptertitle
+ja-chapter-title
+publisd
+scanlatd
+type
+scanlator
+returnlinkstyle
+
+next-series
+next-number
+next-target-page
+
+previous-series
+previous-chapter
+previous-target-page
