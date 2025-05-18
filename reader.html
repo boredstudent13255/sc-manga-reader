@@ -188,10 +188,10 @@ const XMLLastUpChapter = xmlDoc.getElementsByTagName("previous-chapter")[0].chil
 //var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("previous-target-page")[0].childNodes[0].nodeValue;
 var XMLLastUpTargetPage = "01";
 
-if (text.includes("<type>")) {
-  var CurrChaptXMLChapterType = xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue;
+if (text.includes("<returnlinkstyle>")) {
+  var CurrChaptXMLReturnType = xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue;
 } else {
-  var CurrChaptXMLChapterType = "unset";
+  var CurrChaptXMLReturnType = "unset";
 }
 
 if (text.includes("<scanlator>")) {
@@ -262,9 +262,9 @@ let injectpagetitle = document.getElementById("pagetitle");
 injectpagetitle.innerHTML = "Reading " + XMLCurrentSeriesTitle;
 
 
-//Injects a functional return address into the return link tag. Returns to the title select for one-shots.
+//Injects a functional return address into the return link tag. Returns to the title select for titles specified to return like one-shots (embed reader directly in series select.)
 let injectseriespage = document.getElementById("returnlink");
-if (CurrChaptXMLChapterType === "one-shot") {
+if (CurrChaptXMLReturnType === "one-shot") {
   if (CurrChaptXMLScanlator === "My Future Translations") {
     injectseriespage.href = "titles-mft.html";
   } else {
