@@ -188,6 +188,18 @@ const XMLLastUpChapter = xmlDoc.getElementsByTagName("previous-chapter")[0].chil
 //var XMLLastUpTargetPage = xmlDoc.getElementsByTagName("previous-target-page")[0].childNodes[0].nodeValue;
 var XMLLastUpTargetPage = "01";
 
+if (text.includes("<type>")) {
+  var CurrChaptXMLChapterType = xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue;
+} else {
+  var CurrChaptXMLChapterType = "unset";
+}
+
+if (text.includes("<scanlator>")) {
+  var CurrChaptXMLScanlator = xmlDoc.getElementsByTagName("scanlator")[0].childNodes[0].nodeValue;
+} else {
+  var CurrChaptXMLScanlator = "My Future Translations";
+}
+
 //Grabs page number for previous chapter end from the previous chapter's XML
 text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
 parser = new DOMParser();
@@ -250,10 +262,18 @@ let injectpagetitle = document.getElementById("pagetitle");
 injectpagetitle.innerHTML = "Reading " + XMLCurrentSeriesTitle;
 
 
-//Injects a functional return address into the return link tag
+//Injects a functional return address into the return link tag. Returns to the title select for one-shots.
 let injectseriespage = document.getElementById("returnlink");
-injectseriespage.href = "nav-chapter.html?s=" + XMLParentSeriesID;
-
+if (CurrChaptXMLChapterType === "one-shot") {
+  if (CurrChaptXMLScanlator === "My Future Translations") {
+    injectseriespage.href = "titles-mft.html";
+  } else {
+    injectseriespage.href = "titles-other.html";
+  }
+  injectseriespage.innerhtml = "Return to Chapter Select";
+} else {
+  injectseriespage.href = "nav-chapter.html?s=" + XMLParentSeriesID;
+}
 //Deletes the JS warning text, because if this runs, JS is working
 //let erasejswarning = document.getElementById("JavascriptBrokenWarning");
 //erasejswarning.innerHTML = " ";
