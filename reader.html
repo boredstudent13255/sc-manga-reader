@@ -7,7 +7,10 @@ body {
   font-size: 17;
   letter-spacing: -0.2;
   overflow: hidden;
-  }
+}
+.pinklink {
+  opacity: 1;
+}
 .pinklink:link {
   color: E57499;
   text-decoration: none;
@@ -32,6 +35,7 @@ body {
   target-width: 0;
   padding: 5px;
   border-radius: 5px;
+  opacity: 0;
 }
 .reader-content {
   position: absolute;
@@ -49,18 +53,21 @@ img {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,255,0)
+  opacity: 0;
 }
 .pageadvancer {
   width: 50%;
   height: 100%;
   float: left;
   background-color: rgba(255,0,0,0)
+  opacity: 0;
 }
 .pageregresser {
   width: 50%;
   height: 100%;
   float: right;
   background-color: rgba(0,255,0,0)
+  opacity: 0;
 }
 .pagequeuer {
   width: 0px;
