@@ -1,0 +1,33 @@
+<series> <!--ALL TAGS ARE REQUIRED. This excludes "ext-#" tags as the count may vary.-->
+<!--Series details-->
+  <series-id>parent-series-id</series-id>
+    <!---->
+  
+  <series-display-name>Parent Series Readable Name</series-display-name>
+    <!---->
+  
+  <series-original-name>パレントシリーズヴィウアネーム</series-original-name>
+    <!--Pairs with the "ja-" tags in the chapter XML. This should just be the original primary series name.-->
+  
+  <series-overview>No description set</series-overview>
+    <!---->
+
+  
+<!--Chapter entries management-->
+  <chapter-count>1</chapter-count>
+    <!--Tells the chapter entry generator how many entries to insert. If you exceed the set value with your entries, then the following entries will be ignored. This can be used to temporarily hide entries that will be wanted in the future.-->
+
+  <order>beforebegin</order>
+    <!--Tells the generator where to place each entry relative to the invisible placement point. "beforebegin" will place the first numbered entry at the top and the last at the bottom. "afterend" will do the reverse. Functionally, anything but "afterend" will be read as "beforebegin".-->
+  
+  <chapters>
+    <!--There can be an infinite number of ent tags. These tags do not require a leading zero within the tag ID, however they also do not support any number that is not a positive integer. These are NOT chapter numbers, these are entry numbers containing a pointer to a chapter. Note also that the series ID is contained in every entry, this is to allow for including chapters which are internally treated as being from a different series.-->
+    <ent-1>kuse-ni-narisou/Chapt01/</ent-1>
+    <ent-2>kuse-ni-narisou/Chapt01.1/</ent-2> <!--This may be a chapter I add in the future. The MangaDex upload is slightly different due to the site rules, this would be an alternate of Ch.1 containing that version.>
+    <ent-3>kuse-ni-narisou/Chapt02/</ent-3>
+    <ent-4>kuse-ni-narisou/Chapt03/</ent-4>
+    <ent-5>chou-kuse/Chapt01/</ent-5>
+    <ent-6>chou-kuse/Chapt02.5/</ent-6> <!--This will likely not be added. Only for demonstration purposes.-->
+    <ent-7>chou-kuse/Chapt02/</ent-7>
+  </chapters>
+</series>
