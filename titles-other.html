@@ -1,0 +1,89 @@
+<style>
+body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 250;
+  font-size: 17;
+  letter-spacing: -0.2;
+  background-color: 2B2B2B;
+  color: CEC5D8;
+  padding: 0;
+  margin: 0;
+} 
+.titletext {
+  color: CE9AE2;
+  font-weight: 300;
+  font-size:48;
+  letter-spacing: 0.5;
+}
+.content {
+  width: 55%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+.banner {
+  background-position: center center;
+  background-color: black;
+  background-image: url("ReaderBannerPanelsv1.3.jpg");
+  background-size: cover;
+  transform: translate3d(0px, 0px, 0px);
+  width: 100%;
+  height: 20%;
+  Border-style: hidden hidden solid hidden;
+  border-color: E57499;
+  border-width: 0px;
+}
+.navibar {
+  background-color: C588EC;
+  width: 100%
+}
+.nav-ent {
+  color: FFFFFF;
+  background-color: C588EC;
+  width: fit-content;
+  padding: 10px;
+  display: inline-block;
+}
+.nav-ent:hover {
+  background-color: 9F66C7;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Shafarik&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="icon" href="mftreader.ico">
+<html>
+  <title>Looking at manga...</title>
+  <body id="getDisplaySize">
+    <div class="banner"></div>
+    <div class="navibar">
+      <div class="nav-ent" id="MinimizeWidthOnMobile" style="width:20%;background-color:C588EC;display:inline-block;"></div>
+      <a href="titles-mft.html"><div class="nav-ent">My Future Translations manga</div></a>
+      <a href="titles-other.html"><div class="nav-ent">Coming Soon</div></a>
+      <a href="https://boredstudent13255.github.io/missdream-nakayoshi-reup/mft.html"><div class="nav-ent">MFT Main</div></a>
+      <a href="https://sites.google.com/view/sierra-doodle/"><div class="nav-ent">SierraComix' Site</div></a>
+    </div>
+      <div class="content" id="MaximizeWidthOnMobile" >
+        <span class="titletext">Scanlations</span>
+        <br>
+        <div class="lore">
+<p>
+	My Future Translations' reader will also offer pages from other scanlators...in certain scenarios. A title done by a friend of MUZUKUN is likely to appear, and I am hopeful to offer works from Aoi Shoujo Scan as well, though the latter is not a guarantee. At the moment there is nothing on offer here, and applications for additions to this page will not be taken.
+</p>
+        </div>
+    </div>
+  </body>
+  <script>
+const contentdiv = document.getElementById('MaximizeWidthOnMobile');
+const navbarfiller = document.getElementById('MinimizeWidthOnMobile');
+console.log(getDisplaySize.clientWidth);
+console.log(getDisplaySize.clientHeight);
+if (getDisplaySize.clientWidth >= getDisplaySize.clientHeight) {
+console.log("Landscape mode");
+} else {
+console.log("Portrait mode");
+contentdiv.style.width = '90%';
+navbarfiller.style.width = '2.5%';
+}
+  </script>
+</html>
