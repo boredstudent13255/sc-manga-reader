@@ -56,8 +56,8 @@
   <next-series>next-chapter-series-id</next-series>
     <!--REQUIRED. Specifies the series for the next chapter. Intended for cases like "Kuse ni Narisou" -> "Chou Kuse ni Narisou". If there is no next chapter, set to "null" to disable proceeding to nonexistant content.-->
 
-  <next-chapter>02</next-chapter>
-    <!--REQUIRED. See above. Should be the internal number for the next chapter in the sequence.-->
+  <next-number>02</next-number>
+    <!--REQUIRED. See above. Should be the internal number for the next chapter in the sequence. NOTE: This entry's name should be "next-chapter", but due to a mistake on my part, this parity with the previous version is absent and cannot be updated.-->
 
   <next-target-page>default</next-target-page>
     <!--Depricated. Don't bother. In earlier versions of the reader, only the current XML file would be retrieved, so the page number to jump to when stepping forward or back a chapter needed to be in the current chapter's XML. However, this behavior has been disabled for simplicity's sake.-->
