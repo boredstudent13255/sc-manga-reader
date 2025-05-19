@@ -31,7 +31,7 @@
     <!--Optional, unless the prior is present. Note: This tag is not Japanese-specific, this is simply the naming convention I went with. Simply use this to display the native-language arc title.-->
 
   <chaptertitle>Gay Gay Yuri 2</chaptertitle>
-    <!--Optional. Self explanatory. If this is absent, the entry will not display a chapter title. Note: similar to the arc titles, this and ja-chapter-title are a package deal and the use of one demands the other.-->
+    <!--Optional. Self explanatory. If this tag is absent, the entry will not display a chapter title. Note: similar to the arc titles, this and ja-chapter-title are a package deal and the use of one demands the other.-->
 
   <ja-chapter-title>ゲイゲイ百合２</ja-chapter-title>
     <!--Optional, unless the prior is present. Behaves as ja-arc-title does, though like a generic title.-->
