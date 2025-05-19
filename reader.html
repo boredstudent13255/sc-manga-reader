@@ -174,14 +174,14 @@ updatePages()
 var text, parser, xmlDoc;
 try {
   text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + TITLE + "/Chapt" + CHAPT + "/chapter.xml");
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(text,"text/xml");
+  var testForContent = xmlDoc.getElementsByTagName("chapter")[0].childNodes[0].nodeValue;
 } catch {
   console.error("Could not load current chapter's XML. Redirecting to 404 page.");
   setTimeout(() => {
     window.location.replace('chapter-404.html');
   }, 5000); 
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(text,"text/xml");
-  var testForContent = xmlDoc.getElementsByTagName("chapter")[0].childNodes[0].nodeValue;
 }
 
     //gets "returnto" tag
