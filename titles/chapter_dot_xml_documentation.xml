@@ -36,10 +36,10 @@
   <ja-chapter-title>ゲイゲイ百合２</ja-chapter-title>
     <!--Optional, unless the prior is present. Behaves as ja-arc-title does, though like a generic title.-->
 
-  <publisd>1900/01/01</publisd>
-    <!--REQUIRED. Should be the YYYY/MM/DD original publication of the title. Generally, this will be the publication date of a manga magazine. EX: 90s Nakayoshi titles would be the 1st of the month, Yurihime, the 16th-18th (depending on the placement of the weekend.)-->
+  <publisd>1900/1/1</publisd>
+    <!--REQUIRED. Should be the YYYY/MM/DD (readable style, aka no leading 0) original publication of the title. Generally, this will be the publication date of a manga magazine. EX: 90s Nakayoshi titles would be the 1st of the month, Yurihime, the 16th-18th (depending on the placement of the weekend.)-->
 
-  <scanlatd>1900/01/01</scanlatd>
+  <scanlatd>1900/1/1</scanlatd>
     <!--REQUIRED. Release date of the finished scanlation. Does not necessarily need to be the release on THIS site, just the first time it was released. [Note to Sierra: When writing the script, if this is unspecified, tell it to default to the current date.]-->
 
   <scanlator>Aoi Shoujo Scan</scanlator>
