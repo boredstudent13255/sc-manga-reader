@@ -1,16 +1,16 @@
 <series> <!--ALL TAGS ARE REQUIRED. This excludes "ext-#" tags as the count may vary.-->
 <!--Series details-->
   <series-id>parent-series-id</series-id>
-    <!---->
+    <!--The same series ID as is specified in the chapters' XML. The return-to ID if applicable. Should be identical to the ID in the containing folder's name.-->
   
   <series-display-name>Parent Series Readable Name</series-display-name>
-    <!---->
+    <!--Should be the same readable name seen in the chapters' XML.-->
   
   <series-original-name>パレントシリーズヴィウアネーム</series-original-name>
     <!--Pairs with the "ja-" tags in the chapter XML. This should just be the original primary series name.-->
   
   <series-overview>No description set</series-overview>
-    <!---->
+    <!--A brief series summary. Line breaks are not supported.-->
 
   
 <!--Chapter entries management-->
