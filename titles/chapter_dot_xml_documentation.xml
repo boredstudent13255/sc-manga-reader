@@ -46,7 +46,7 @@
     <!--Currently optional, but may be required in the future. Scanlator credit. As of writing, this is currently only used to determine which series select page to send the user to from a oneshot. If this tag is absent, then the series select page will default to My Future Translations. However, team credits may be added to the chapter select page in the future.-->
 
   <type>one-shot</type>
-    <!--Optional. If the title is a oneshot, set the contents to "one-shot" and it will be flagged as such in chapter nagivation. Otherwise, the input can be anything and behavior will be unchanged.-->
+    <!--Optional. If the title is a oneshot, set the contents to "one-shot" and it will be flagged as such in chapter nagivation. NOTE: If this tag is not present, the entry will be assumed to be a serialization. If it IS present, then the contents HAVE to be either "one-shot" or "serialization" or entry generation will fail.-->
 
   <returnlinkstyle>one-shot</returnlinkstyle>
     <!--Optional. If the tag is specified as "one-shot", then the "return to series page" link will be replaced with a "return to series select" link. Takes the same inputs as "type", as during development of this feature, the "type" tag was referenced.-->
