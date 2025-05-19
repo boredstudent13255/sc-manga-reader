@@ -178,12 +178,11 @@ try {
   console.error("Could not load current chapter's XML. Redirecting to 404 page.");
   setTimeout(() => {
     window.location.replace('chapter-404.html');
-  }, 5000);
+  }, 5000); 
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(text,"text/xml");
+  var testForContent = xmlDoc.getElementsByTagName("chapter")[0].childNodes[0].nodeValue;
 }
-  
-parser = new DOMParser();
-xmlDoc = parser.parseFromString(text,"text/xml");
-
 
     //gets "returnto" tag
   var XMLParentSeriesID = TITLE;
