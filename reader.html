@@ -7,6 +7,7 @@ body {
   font-size: 17;
   letter-spacing: -0.2;
   overflow: hidden;
+  margin: 0px;
 }
 .pinklink {
 
@@ -34,40 +35,45 @@ body {
   background-color: FFFFFF;
   target-width: 0;
   padding: 5px;
+  margin: 10px;
   border-radius: 5px;
 }
 .reader-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  text-align: center;
 }
-img {
+.ViewablePage {
   max-width: 50%;
+  max-height: 100%;
 }
 .pageshifter {
   width: 100%;
   height: 100%;
-  /* background-color: rgba(0,0,255,0) Colors & transparency were previously set to allow for viewing the locations of DIVs in testing. The alpha was set to zero to hide them again, but due to a bug in a force-dark-mode plugin, the alpha value was not carried over and these normally-hidden DIVs obscured 95% of the content. As such, I've had to comment this out completely.*/
+  background-color: rgba(0,0,255,0.2); /*Colors & transparency were previously set to allow for viewing the locations of DIVs in testing. The alpha was set to zero to hide them again, but due to a bug in a force-dark-mode plugin, the alpha value was not carried over and these normally-hidden DIVs obscured 95% of the content. As such, I've had to comment this out completely.*/
 }
 .pageadvancer {
   width: 50%;
   height: 100%;
   float: left;
-  /* background-color: rgba(255,0,0,0) */
+  background-color: rgba(255,0,0,0.2); /**/
 }
 .pageregresser {
   width: 50%;
   height: 100%;
   float: right;
-  /* background-color: rgba(0,255,0,0) */
+  background-color: rgba(0,255,0,0.2); /**/
 }
 .pagequeuer {
   width: 0px;
   height: 0px;
+}
+.foreground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 </style>
 
@@ -79,20 +85,21 @@ img {
   <title id="pagetitle">Reading something on the My Future Translations website</title>
 
   <body>
+    
+    <div class="foreground">
+      <div id="returnlinkcontainer" class="return-link-container">
+        <a class="pinklink" id="returnlink" href="">Return to series page</a>
+      </div> 
 
-    <div id="returnlinkcontainer" class="return-link-container">
-      <a class="pinklink" id="returnlink" href="">
-      Return to series page
-      </a>
-    </div> 
-
-    <div class="pageshifter">
-      <div class="pageadvancer" onclick="advancePage()"><img class="pagequeuer" id="pagequeue1"/></div>
-      <div class="pageregresser" onclick="retreatPage()"><img class="pagequeuer" id="pagequeue2"/></div>
+      <div class="pageshifter">
+        <div class="pageadvancer" onclick="advancePage()"><img class="pagequeuer" id="pagequeue1"/></div>
+        <div class="pageregresser" onclick="retreatPage()"><img class="pagequeuer" id="pagequeue2"/></div>
+      </div>
     </div>
 
     <div class="reader-content">
-<img id="Page-Left" src="" style="max-height:100%;" /><img id="Page-Right" src="" style="max-height:100%;" />
+      <img class="ViewablePage" id="Page-Left" src="" />
+      <img class="ViewablePage" id="Page-Right" src="" />
     </div>
 
   </body>
