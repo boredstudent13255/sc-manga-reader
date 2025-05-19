@@ -132,16 +132,16 @@ body {
 <link rel="icon" href="mftreader.ico">
 <html>
   <title>Looking at manga...</title>
-  <body>
+  <body id="getDisplaySize">
     <div class="banner"></div>
     <div class="navibar">
-      <div class="nav-ent" style="width:20%;background-color:C588EC;display:inline-block;"></div>
+      <div class="nav-ent" id="MinimizeWidthOnMobile" style="width:20%;background-color:C588EC;display:inline-block;"></div>
       <a href="titles-mft.html"><div class="nav-ent">My Future Translations manga</div></a>
       <a href="titles-other.html"><div class="nav-ent">Coming Soon</div></a>
       <a href="https://boredstudent13255.github.io/missdream-nakayoshi-reup/mft.html"><div class="nav-ent">MFT Main</div></a>
       <a href="https://sites.google.com/view/sierra-doodle/"><div class="nav-ent">SierraComix' Site</div></a>
     </div>
-      <div class="content" >
+      <div class="content" id="MaximizeWidthOnMobile" >
         <span class="titletext">Scanlations</span>
         <br>
         <p>
@@ -178,7 +178,7 @@ body {
 <div class="scanlation">
   <div class="seriesdata">
      <a class="pinklink" href="nav-chapter.html?s=kaede"><span class="seriestitleen">Kaede Ninpouchou</span></a>
-    <br><span class="seriestitleja">かえで忍法帳</span>
+    <br><span class="seriestitleja">かえで忍法帳</span>
     <div class="seriesdata2">
       <p class="seriesdetails">
       Art: <b>Nakano Yayoi</b> Story: <b>Yoshimura An</b> Serialization: <b>Nakayoshi</b>
@@ -195,7 +195,7 @@ body {
 <div class="scanlation">
   <div class="seriesdata">
      <a class="pinklink" href="nav-chapter.html?s=totsuzen"><span class="seriestitleen">Totsuzen Parallel!</span></a>
-    <br><span class="seriestitleja">とつぜん☆パラレル!</span>
+    <br><span class="seriestitleja">とつぜん☆パラレル!</span>
     <div class="seriesdata2">
       <p class="seriesdetails">
       Art & Story: <b>Nakano Yayoi</b> Serialization: <b>RunRun</b>
@@ -266,4 +266,19 @@ body {
 
     </div>
   </body>
+  <script>
+const contentdiv = document.getElementById('MaximizeWidthOnMobile');
+const navbarfiller = document.getElementById('MinimizeWidthOnMobile');
+console.log(getDisplaySize.clientWidth);
+console.log(getDisplaySize.clientHeight);
+if (getDisplaySize.clientWidth >= getDisplaySize.clientHeight) {
+console.log("Landscape mode");
+} else {
+console.log("Portrait mode");
+contentdiv.style.width = '90%';
+navbarfiller.style.width = '2.5%';
+}
+
+
+  </script>
 </html>
