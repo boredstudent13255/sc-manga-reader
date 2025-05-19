@@ -256,13 +256,13 @@ function addChapter(series,number,EntryOrder) {
     var CurrChaptXMLPageCount = xmlDoc.getElementsByTagName("pagecount")[0].childNodes[0].nodeValue;
     //Filling out optional tags
       //gets "chapterdisplaynum" tag
-    if (text.includes("chapterdisplaynum")) {
+    if (text.includes("<chapterdisplaynum>")) {
       var CurrChaptXMLChapterNumReadable = xmlDoc.getElementsByTagName("chapterdisplaynum")[0].childNodes[0].nodeValue;
     } else {
       var CurrChaptXMLChapterNumReadable = "unset";
     }
       //gets "arctitle" and "ja-arc-title" tags
-    if (text.includes("arctitle")) {
+    if (text.includes("<arctitle>")) {
       var CurrChaptXMLArcTitle = xmlDoc.getElementsByTagName("arctitle")[0].childNodes[0].nodeValue;
       var CurrChaptXMLArcTitleOrig = xmlDoc.getElementsByTagName("ja-arc-title")[0].childNodes[0].nodeValue;
     } else {
@@ -270,7 +270,7 @@ function addChapter(series,number,EntryOrder) {
       var CurrChaptXMLArcTitleOrig = "unset";
     }
       //gets "chaptertitle" and "ja-chapter-title" tags
-    if (text.includes("chaptertitle")) {
+    if (text.includes("<chaptertitle>")) {
       var CurrChaptXMLChapterTitle = xmlDoc.getElementsByTagName("chaptertitle")[0].childNodes[0].nodeValue;
       var CurrChaptXMLChapterTitleOrig = xmlDoc.getElementsByTagName("ja-chapter-title")[0].childNodes[0].nodeValue;
     } else {
@@ -278,13 +278,13 @@ function addChapter(series,number,EntryOrder) {
       var CurrChaptXMLChapterTitleOrig = "unset";
     }
       //gets "type" tag
-    if (text.includes("type")) {
+    if (text.includes("<type>")) {
       var CurrChaptXMLChapterType = xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue;
     } else {
       var CurrChaptXMLChapterType = "unset";
     }
       //gets "publisd" and "scanlatd" tags
-    if (text.includes("publisd")) {
+    if (text.includes("<publisd>")) {
       var CurrChaptXMLPubDate = xmlDoc.getElementsByTagName("publisd")[0].childNodes[0].nodeValue;
       var CurrChaptXMLScanDate = xmlDoc.getElementsByTagName("scanlatd")[0].childNodes[0].nodeValue;
     } else {
@@ -299,19 +299,19 @@ function addChapter(series,number,EntryOrder) {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a title='Reiko is my wife. -Sierra' class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
   } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle !== "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
-  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle !== "unset") {
+  } else if ((CurrChaptXMLChapterType === "unset" || CurrChaptXMLChapterType === "serialization") && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle !== "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
   } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle !== "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
-  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle !== "unset") {
+  } else if ((CurrChaptXMLChapterType === "unset" || CurrChaptXMLChapterType === "serialization") && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle !== "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'>Chapter " + CurrChaptXMLChapterNumReadable + ": " + CurrChaptXMLChapterTitle + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話　" + CurrChaptXMLChapterTitleOrig + "</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
   } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle === "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
-  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle === "unset") {
+  } else if ((CurrChaptXMLChapterType === "unset" || CurrChaptXMLChapterType === "serialization") && CurrChaptXMLArcTitle !== "unset" && CurrChaptXMLChapterTitle === "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='arc-title'>" + CurrChaptXMLArcTitle + "</span>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'><span class='arc-title-ja'>" + CurrChaptXMLArcTitleOrig + "</span>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
   } else if (CurrChaptXMLChapterType === "one-shot" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle === "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'><span class='is-one-shot'>One-shot</span>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
-  } else if (CurrChaptXMLChapterType === "unset" && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle === "unset") {
+  } else if ((CurrChaptXMLChapterType === "unset" || CurrChaptXMLChapterType === "serialization") && CurrChaptXMLArcTitle === "unset" && CurrChaptXMLChapterTitle === "unset") {
     ChapterEntryInsertionPoint.insertAdjacentHTML(EntryOrder,"<a class='chaptercontainerurl' href='reader.html?s=" + CurrChaptXMLSeriesID + "&c=" + CurrChaptXMLChapterNum + "'><div class='scan-chapter'><div class='scan-data'><span class='chapter-title-en'>Chapter " + CurrChaptXMLChapterNumReadable + "</span><div class='chapter-title-ja'>第" + CurrChaptXMLChapterNumReadable + "話</div><div class='years'>Published " + CurrChaptXMLPubDate + ", Scanlated " + CurrChaptXMLScanDate + "</div><div class='scandata2'>" + CurrChaptXMLChapterDesc + "</div></div></div></a>");
   } else {
     console.log("Chapter generation was attempted, but failed due to missing XML data.")
