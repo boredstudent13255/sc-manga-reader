@@ -43,7 +43,7 @@
     <!--REQUIRED. Release date of the finished scanlation. Does not necessarily need to be the release on THIS site, just the first time it was released. [Note to Sierra: When writing the script, if this is unspecified, tell it to default to the current date.]-->
 
   <scanlator>Aoi Shoujo Scan</scanlator>
-    <!--Currently optional, but may be required in the future. Scanlator credit. As of writing, this is currently only used to determine which series select page to send the user to from a oneshot. If this tag is absent, then the series select page will default to My Future Translations. However, team credits may be added to the chapter select page in the future.-->
+    <!--REQUIRED for non-My Future Translations titles. Scanlator credit. If this tag is absent, then the page will default to My Future Translations.-->
 
   <type>one-shot</type>
     <!--Optional. If the title is a oneshot, set the contents to "one-shot" and it will be flagged as such in chapter nagivation. NOTE: If this tag is not present, the entry will be assumed to be a serialization. If it IS present, then the contents HAVE to be either "one-shot" or "serialization" or entry generation will fail.-->
