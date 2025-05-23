@@ -336,6 +336,12 @@ if (PAGEO < 1) {
   PAGEO = 1;
 }
 
+if(PAGEO % 2 == 0) {
+  console.log("Specified page number is even. Incrementing to the relevant odd number. PAGEO Value is now '" + ++PAGEO + "'");
+} else {
+  console.log("Odd page number check passed. PAGEO Value remains '" + PAGEO + "'");
+}
+
 updatePages()
   
 console.log("Current series title is " + XMLCurrentSeriesTitle + ", chapter " + XMLDisplayableChapterNumber + ", featuring " + XMLChapterPageCount + " pages. Were you to click next, you would go to the url for SeriesID '" + XMLNextUpID + "', chapter number '" + XMLNextUpChapter + "' and page number '" + XMLNextUpTargetPage + "'.");
@@ -567,6 +573,11 @@ function scrollWheelPageSeek(scrollDelta) {
     }
     if (PAGEO < 1) {
       PAGEO = 1;
+    }
+    if(PAGEO % 2 == 0) {
+      console.log("Specified page number is even. Incrementing to the relevant odd number. PAGEO Value is now '" + ++PAGEO + "'");
+    } else {
+      console.log("Odd page number check passed. PAGEO Value remains '" + PAGEO + "'");
     }
     updatePages() 
   }, 1000);
