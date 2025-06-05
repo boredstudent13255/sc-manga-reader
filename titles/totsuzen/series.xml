@@ -3,15 +3,10 @@
   <series-display-name>Totsuzen Parallel!</series-display-name>
   <series-original-name>とつぜん☆パラレル！</series-original-name>
   <series-overview>Truly, this is Furry Isekai™! Nanako and friends fall through a magic mirror and swap places with versions of themselves from a world where anthropomorphic animals take the place of humans. Their task is simply to find a way home. </series-overview>
-
-  <chapter-count>1</chapter-count> <!--Currently undervalued to prevent unreleased chapter entries from rendering. This is intended functionality.-->
+  <chapter-count>2</chapter-count>
   <order>beforebegin</order>
   <chapters>
     <ent-1>totsuzen/Chapt01/</ent-1>
     <ent-2>totsuzen/Chapt02/</ent-2>
-    <ent-3>totsuzen/Chapt03/</ent-3>
-    <ent-4>totsuzen/Chapt04/</ent-4>
-    <ent-5>totsuzen/Chapt05/</ent-5>
-    <ent-6>totsuzen/Chapt06/</ent-6>
   </chapters>
 </series>
