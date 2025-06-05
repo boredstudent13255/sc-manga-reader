@@ -3,9 +3,10 @@
   <series-display-name>Nakano Yayoi One-Shots</series-display-name>
   <series-original-name>--</series-original-name>
   <series-overview>An unofficial collection of scanlated Yayoi one-shots. Titles previously re-released in a tankoubon will be marked as such.</series-overview>
-  <chapter-count>1</chapter-count>
+  <chapter-count>2</chapter-count>
   <order>beforebegin</order>
   <chapters>
-    <ent-1>anthology-yayoi-nakano/abunai/</ent-1>
+    <ent-1>anthology-yayoi-nakano/Chapt02/</ent-1> <!--Abunai Egg Love-->
+    <ent-2>anthology-yayoi-nakano/Chapt01/</ent-2> <!--Kanoko Momogumi-->
   </chapters>
 </series>
