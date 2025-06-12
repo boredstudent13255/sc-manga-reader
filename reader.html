@@ -482,8 +482,8 @@ let injectpageodd = document.getElementById("Page-Left");
 let injectpageeven = document.getElementById("Page-Right");
 let queuepageodd = document.getElementById("pagequeue1");
 let queuepageeven = document.getElementById("pagequeue2");
-injectpageodd.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEO + ".jpg";
-injectpageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEE + ".jpg";
+injectpageodd.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + verifyDoubleDigitChapterMinimumConformity(PAGEO) + ".jpg";
+injectpageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + verifyDoubleDigitChapterMinimumConformity (PAGEE) + ".jpg";
 ++PAGEO;
 ++PAGEO;
 ++PAGEE;
@@ -557,13 +557,13 @@ function scrollWheelPageSeek(scrollDelta) {
     console.log("pageO is " + PAGEO);
     //console.log(scrollDelta);
   if (scrollDelta === 1) {
-    PAGEO = Number(PAGEO) + 2;
+    PAGEO = verifyDoubleDigitChapterMinimumConformity(Number(PAGEO)) + 2;
     //console.log("advance");
   } else {
-    PAGEO = Number(PAGEO) - 2;
+    PAGEO = verifyDoubleDigitChapterMinimumConformity(Number(PAGEO)) - 2;
     //console.log("regress");
   }
-  insertPageNum.innerHTML = PAGEO;
+  insertPageNum.innerHTML = verifyDoubleDigitChapterMinimumConformity(PAGEO);
 
   clearTimeout(timeoutId);
   timeoutId = setTimeout(() => {
@@ -606,7 +606,6 @@ function verifyDoubleDigitChapterMinimumConformity(numToCheck) {
     }
   }
 }
-
 </script>
 
 </html>
