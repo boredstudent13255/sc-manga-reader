@@ -4,11 +4,12 @@
   <series-original-name>私の推しは悪役令嬢。</series-original-name>
   <series-overview>Bonus content from ILTV which was scanlated by My Future Translations.</series-overview>
 
-  <chapter-count>3</chapter-count>
+  <chapter-count>4</chapter-count>
   <order>beforebegin</order>
   <chapters>
     <ent-1>wataoshi/Chapt25.6/</ent-1>
     <ent-2>wataoshi/Chapt30.5/</ent-2>
-    <ent-3>wataoshi/Chapt50.5/</ent-3>
+    <ent-3>wataoshi/Chapt30.5/</ent-3>
+    <ent-4>wataoshi/Chapt50.5/</ent-4>
   </chapters>
 </series>
