@@ -3,12 +3,13 @@
   <series-display-name>Kaede Ninpouchou</series-display-name>
   <series-original-name>かえで忍法帳</series-original-name>
   <series-overview> The Kageuras are a family of hermit ninjas. But when an old family friend shows up and throws them out of their home, they find themselves lost in modern society, having to fight off the goons of the man that threw them out of their original home. </series-overview>
-  <chapter-count>4</chapter-count>
+  <chapter-count>5</chapter-count>
   <order>beforebegin</order>
   <chapters>
     <ent-1>kaede/Chapt01/</ent-1>
     <ent-2>kaede/Chapt02/</ent-2>
     <ent-3>kaede/Chapt03/</ent-3>
     <ent-4>kaede/Chapt04/</ent-4>
+    <ent-5>kaede/Chapt05/</ent-5>
   </chapters>
 </series>
