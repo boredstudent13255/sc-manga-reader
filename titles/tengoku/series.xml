@@ -1,1 +1,23 @@
-dummy
+<series>
+  <series-id>tengoku</series-id>
+  <series-display-name>Gakuen Tengoku</series-display-name>
+  <series-original-name>学園天国</series-original-name>
+  <series-overview>This is a placeholder. Series forthcoming, expect Ch.1 in mid-January.</series-overview>
+  <chapter-count>0</chapter-count>
+  <order>beforebegin</order>
+  <chapters>
+    <ent-1>tengoku/Chapt01/</ent-1>
+    <ent-2>tengoku/Chapt02/</ent-2>
+    <ent-3>tengoku/Chapt03/</ent-3>
+    <ent-4>tengoku/Chapt04/</ent-4>
+    <ent-5>tengoku/Chapt05/</ent-5>
+    <ent-6>tengoku/Chapt05.5/</ent-6>
+    <ent-7>tengoku/Chapt06/</ent-7>
+    <ent-8>tengoku/Chapt07/</ent-8>
+    <ent-9>tengoku/Chapt08/</ent-9>
+    <ent-10>tengoku/Chapt09/</ent-10>
+    <ent-11>tengoku/Chapt10/</ent-11>
+    <ent-12>tengoku/Chapt11/</ent-12>
+    <ent-13>tengoku/Chapt12/</ent-13>
+  </chapters>
+</series>
