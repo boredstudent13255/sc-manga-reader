@@ -207,6 +207,7 @@ var CHAPT = urlParams.get('c');
 let PAGEO = urlParams.get('p');
 var BACKDROPCOLOR = urlParams.get('bg');
 var EMBEDMODE = urlParams.get('embed');
+var REMOTE_DOMAIN = urlParams.get('d');
 
 insertChapterNum.innerHTML = CHAPT;
 insertPageNum.innerHTML = PAGEO;
@@ -214,6 +215,16 @@ insertPageNum.innerHTML = PAGEO;
 if (EMBEDMODE !== "true") {
 EMBEDMODE = "false";
 }
+
+if (REMOTE_DOMAIN === null) {
+REMOTE_DOMAIN = "https://boredstudent13255.github.io/sc-manga-reader/titles/";
+var REMOTE_DOMAIN_INSERT = "";
+} else {
+var REMOTE_DOMAIN_INSERT = "&d=" + REMOTE_DOMAIN;
+}
+
+console.log("remote domain is " + REMOTE_DOMAIN);
+
 
 //Apply configurations for heavier customization
 if (BACKDROPCOLOR === BACKDROPCOLOR) {
@@ -264,7 +275,7 @@ console.log("Final log before updating pages. PAGEO Value is currently '" + PAGE
 
 var text, parser, xmlDoc;
 try {
-  text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + TITLE + "/Chapt" + CHAPT + "/chapter.xml");
+  text = loadFileToElement(REMOTE_DOMAIN + TITLE + "/Chapt" + CHAPT + "/chapter.xml");
   parser = new DOMParser();
   xmlDoc = parser.parseFromString(text,"text/xml");
   var testForContent = xmlDoc.getElementsByTagName("chapter")[0].childNodes[0].nodeValue;
@@ -311,7 +322,7 @@ if (text.includes("<scanlator>")) {
 }
 
 //Grabs page number for previous chapter end from the previous chapter's XML
-text = loadFileToElement("https://boredstudent13255.github.io/sc-manga-reader/titles/" + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
+text = loadFileToElement(REMOTE_DOMAIN + XMLLastUpID + "/Chapt" + XMLLastUpChapter + "/chapter.xml");
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(text,"text/xml");
 if (text.includes("<pagecount>")) {
@@ -417,7 +428,7 @@ if (CurrChaptXMLReturnType === "one-shot") {
   }
   injectseriespage.innerHTML = "Return to Series Select";
 } else {
-  injectseriespage.href = "nav-chapter.html?s=" + XMLParentSeriesID;
+  injectseriespage.href = "nav-chapter.html?s=" + XMLParentSeriesID + REMOTE_DOMAIN_INSERT;
 }
 //Deletes the JS warning text, because if this runs, JS is working
 //let erasejswarning = document.getElementById("JavascriptBrokenWarning");
@@ -482,15 +493,15 @@ let injectpageodd = document.getElementById("Page-Left");
 let injectpageeven = document.getElementById("Page-Right");
 let queuepageodd = document.getElementById("pagequeue1");
 let queuepageeven = document.getElementById("pagequeue2");
-injectpageodd.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + verifyDoubleDigitChapterMinimumConformity(PAGEO) + ".jpg";
-injectpageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + verifyDoubleDigitChapterMinimumConformity (PAGEE) + ".jpg";
+injectpageodd.src = REMOTE_DOMAIN + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + verifyDoubleDigitChapterMinimumConformity(PAGEO) + ".jpg";
+injectpageeven.src = REMOTE_DOMAIN + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + verifyDoubleDigitChapterMinimumConformity (PAGEE) + ".jpg";
 ++PAGEO;
 ++PAGEO;
 ++PAGEE;
 ++PAGEE;
 convertPagesToString()
-queuepageodd.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEO + ".jpg";
-queuepageeven.src = "titles/" + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEE + ".jpg";
+queuepageodd.src = REMOTE_DOMAIN + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEO + ".jpg";
+queuepageeven.src = REMOTE_DOMAIN + TITLE + "/Chapt" + CHAPT + "/" + TITLE + "-c" + CHAPT + "-p" + PAGEE + ".jpg";
 --PAGEO;
 --PAGEO;
 --PAGEE;

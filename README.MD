@@ -18,3 +18,8 @@ This readme will just be documentation for various end user features.
 
 <b>"embed"</b> - Disables changing chapters and forcibly hides the on-screen controls. Intended to be used for embedding a single chapter on another website. <br>
 'embed=true' enabled embed mode.
+
+<b>"d"</b> - Specifies the target domain. <br>
+'d=https://boredstudent13255.github.io/sc-manga-reader/test-entry/' will fetch the specified series from my test entry, a technically different domain. In nav-chapter, if the series is set to 'test-series', it will display that test series entry and its test chapter entry. <br>
+So long as a series is hosted in the proper format, with the required "series.xml" and "chapter.xml"s in place, this query tag enables this reader to access manga from anywhere on the internet. <br>
+This feature is a sort of prototype for Nagisa Reader, which is better explained by the (currently empty) repo on my profile.
