@@ -568,7 +568,8 @@ function scrollWheelPageSeek(scrollDelta) {
     console.log("pageO is " + PAGEO);
     //console.log(scrollDelta);
   if (scrollDelta === 1) {
-    PAGEO = verifyDoubleDigitChapterMinimumConformity(Number(PAGEO)) + 2;
+    ++PAGEO
+    PAGEO = verifyDoubleDigitChapterMinimumConformity(Number(++PAGEO)); //this looks and is scuffed but it was to fix a bug with the scroll wheel controls where the first forward scroll would add a 2 as if the page value was a string and not a number, turning 1 into 12, 3 into 32, etc.
     //console.log("advance");
   } else {
     PAGEO = verifyDoubleDigitChapterMinimumConformity(Number(PAGEO)) - 2;
