@@ -1,0 +1,22 @@
+<chapter>
+  <parentseries>testserie2</parentseries>
+  <parentdisplayname>placeholder title</parentdisplayname>
+  <chaptersummary>placeholder</chaptersummary>
+
+  <chapterdisplaynum>5</chapterdisplaynum>
+  <chapternum>05</chapternum>
+  <pagecount>193</pagecount>
+  <chaptertitle>Volume 5</chaptertitle>
+  <ja-chapter-title>vol05</ja-chapter-title>
+  <publisd>0000/00/00</publisd>
+  <scanlatd>0000/00/00</scanlatd>
+  <scanlator>unknown</scanlator>
+  <type>serialization</type>
+  <returnlinkstyle>serialization</returnlinkstyle>
+
+  <next-series>null</next-series>
+  <next-number>null</next-number>
+
+  <previous-series>testserie2</previous-series>
+  <previous-chapter>04</previous-chapter>
+</chapter>
