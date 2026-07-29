@@ -1,0 +1,15 @@
+<series>
+  <series-id>testserie2</series-id>
+  <series-display-name>placeholder title</series-display-name>
+  <series-original-name>jp placeholder title</series-original-name>
+  <series-overview>placeholder</series-overview>
+  <chapter-count>5</chapter-count>
+  <order>beforebegin</order>
+  <chapters>
+    <ent-1>testserie2/Chapt01/</ent-1>
+    <ent-2>testserie2/Chapt02/</ent-2>
+    <ent-3>testserie2/Chapt03/</ent-3>
+    <ent-4>testserie2/Chapt04/</ent-4>
+    <ent-5>testserie2/Chapt05/</ent-5>
+  </chapters>
+</series>
