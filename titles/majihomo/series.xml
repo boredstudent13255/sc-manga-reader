@@ -3,11 +3,12 @@
   <series-display-name>Magical Trans: The End of Mahou Shoujo Bu!?</series-display-name>
   <series-original-name>(is OEL manga)</series-original-name>
   <series-overview>Set shortly after the conclusion of Magical Trans, the Magical Girl Club has been ordered to disband, forcing Minami to decide: Stay a man, or stay a woman.</series-overview>
-  <chapter-count>2</chapter-count>
+  <chapter-count>3</chapter-count>
   <order>beforebegin</order>
   <chapters>
     <ent-1>majihomo/Chapt01/</ent-1>
     <ent-2>majihomo/Chapt02/</ent-2>
-    <ent-3>majihomo/Chapt03/</ent-3>
+    <ent-3>majihomo/Chapt02.1/</ent-3>
+    <ent-4>majihomo/Chapt03/</ent-4>
   </chapters>
 </series>
