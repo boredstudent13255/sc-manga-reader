@@ -1,0 +1,28 @@
+<series>
+  <series-id>ribbon18</series-id>
+  <series-display-name>New Princess Knight</series-display-name>
+  <series-original-name>新約・リボンの騎士</series-original-name>
+  <series-overview>In the kingdom of Silverland, only a man can inherit the throne. To honor the late king's dying wish that his kingdom be passed on to his child, his daughter, Sapphire, has been raised as the prince since birth. Sapphire's true gender remains secret to all, but the kingdom's Prime Minister suspects the truth, and he hires an assassin, Willema, to unveil Sapphire's secret or otherwise eliminate her as an heir to the throne. But complications arise when Willema begins to take a liking to Sapphire...!</series-overview>
+  <chapter-count>1</chapter-count>
+  <order>beforebegin</order>
+  <chapters>
+    <ent-1>ribbon18/Chapt01/</ent-1>
+    <ent-2>ribbon18/Chapt02/</ent-2>
+    <ent-3>ribbon18/Chapt03/</ent-3>
+    <ent-4>ribbon18/Chapt04/</ent-4>
+    <ent-5>ribbon18/Chapt05/</ent-5>
+    <ent-6>ribbon18/Chapt06/</ent-6>
+    <ent-7>ribbon18/Chapt06.5/</ent-7>
+    <ent-8>ribbon18/Chapt07/</ent-8>
+    <ent-9>ribbon18/Chapt08/</ent-9>
+    <ent-10>ribbon18/Chapt09/</ent-10>
+    <ent-11>ribbon18/Chapt10/</ent-11>
+    <ent-12>ribbon18/Chapt11/</ent-12>
+    <ent-13>ribbon18/Chapt12/</ent-13>
+    <ent-14>ribbon18/Chapt13/</ent-14>
+    <ent-15>ribbon18/Chapt14/</ent-15>
+    <ent-16>ribbon18/Chapt15/</ent-16>
+    <ent-17>ribbon18/Chapt16/</ent-17>
+    <ent-18>ribbon18/Chapt16.5/</ent-18>
+  </chapters>
+</series>
